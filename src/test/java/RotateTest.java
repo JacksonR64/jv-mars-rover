@@ -1,6 +1,6 @@
 import org.example.DIRECTION;
 import org.example.Position;
-import org.example.RotateInstruction;
+import org.example.ROTATE_INSTRUCTION;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,10 +19,10 @@ class RotateTest {
         Position facingWest = new Position(0, 0, DIRECTION.W);
 
         // Act
-        Position result1 = rotate(facingNorth, RotateInstruction.L);
-        Position result2 = rotate(facingEast, RotateInstruction.L);
-        Position result3 = rotate(facingSouth, RotateInstruction.L);
-        Position result4 = rotate(facingWest, RotateInstruction.L);
+        Position result1 = rotate(facingNorth, ROTATE_INSTRUCTION.L);
+        Position result2 = rotate(facingEast, ROTATE_INSTRUCTION.L);
+        Position result3 = rotate(facingSouth, ROTATE_INSTRUCTION.L);
+        Position result4 = rotate(facingWest, ROTATE_INSTRUCTION.L);
 
 
         // Assert
@@ -44,10 +44,10 @@ class RotateTest {
         Position facingWest = new Position(0, 0, DIRECTION.W);
 
         // Act
-        Position result1 = rotate(facingNorth, RotateInstruction.R);
-        Position result2 = rotate(facingEast, RotateInstruction.R);
-        Position result3 = rotate(facingSouth, RotateInstruction.R);
-        Position result4 = rotate(facingWest, RotateInstruction.R);
+        Position result1 = rotate(facingNorth, ROTATE_INSTRUCTION.R);
+        Position result2 = rotate(facingEast, ROTATE_INSTRUCTION.R);
+        Position result3 = rotate(facingSouth, ROTATE_INSTRUCTION.R);
+        Position result4 = rotate(facingWest, ROTATE_INSTRUCTION.R);
 
 
         // Assert

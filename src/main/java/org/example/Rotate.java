@@ -6,10 +6,10 @@ import static org.example.Position.DIRECTIONS;
 import static org.example.Position.totalDirectionCount;
 
 public class Rotate {
-    public static Position rotate (Position position, RotateInstruction rotateInstruction){
+    public static Position rotate (Position position, ROTATE_INSTRUCTION ROTATEINSTRUCTION){
         int cardinalIndex = Arrays.binarySearch(DIRECTIONS, position.getFacing());
 
-        if (rotateInstruction.equals(RotateInstruction.L)){
+        if (ROTATEINSTRUCTION.equals(ROTATE_INSTRUCTION.L)){
             if (cardinalIndex == 0){
                 position.setFacing(DIRECTIONS[totalDirectionCount]);
             }else {
@@ -17,7 +17,7 @@ public class Rotate {
             }
         }
 
-        if (rotateInstruction.equals(RotateInstruction.R)){
+        if (ROTATEINSTRUCTION.equals(ROTATE_INSTRUCTION.R)){
             if (cardinalIndex == totalDirectionCount){
                 position.setFacing(DIRECTIONS[0]);
             }else {

@@ -1,6 +1,6 @@
 package org.example;
 
-public enum MovementInstruction implements Instructions{
+public enum MOVEMENT_INSTRUCTION implements INSTRUCTION {
     M
     /*MOVE_FORWARD("F"),
     MOVE_BACKWARD("B");*/

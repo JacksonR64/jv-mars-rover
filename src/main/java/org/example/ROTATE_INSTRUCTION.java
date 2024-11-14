@@ -1,6 +1,6 @@
 package org.example;
 
-public enum RotateInstruction implements Instructions{
+public enum ROTATE_INSTRUCTION implements INSTRUCTION {
     L,
     R
 /*    ROTATE_LEFT("L"),
