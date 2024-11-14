@@ -1,6 +1,6 @@
 package org.example;
 
-public enum Direction {
+public enum DIRECTION {
     N,
     E,
     S,

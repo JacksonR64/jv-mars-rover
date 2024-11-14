@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class InputTest {
 
     @Test
-    @DisplayName("Valid expected inputs return correct PlateauSize")
+    @DisplayName("valid expected inputs return correct PlateauSize")
     void plateauCreationParserValidInputTest() {
         // Arrange
         String input1 = "1 1";
@@ -35,7 +35,7 @@ class InputTest {
     }
 
     @Test
-    @DisplayName("Valid expected inputs return correct PlateauSize")
+    @DisplayName("invalid inputs throw correct exception")
     void plateauCreationParserInvalidInputTest() {
         // Arrange
         String input1 = null;
