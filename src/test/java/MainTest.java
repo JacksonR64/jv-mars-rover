@@ -8,12 +8,13 @@ class MainTest {
     @Test
     void testTest() {
         // Arrange
-        int input1 = 1;
+        String input1 = "test";
 
         // Act
         int expected1 = Main.test(input1);
 
         // Assert
-        assertEquals(expected1,1);
+        assertEquals(expected1,0);
     }
+
 }

@@ -4,7 +4,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
     }
-    public static int test (int input){
-        return input;
+    public static int test (String input){
+
+        return 0;
     }
 }
