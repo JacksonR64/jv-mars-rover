@@ -18,6 +18,10 @@ public class InvalidUserInputException extends RuntimeException {
                     ("Error: Please enter Valid Size for Y axis." +
                             "\nX axis min: " + Y_AXIS_MIN);
 
+    public static InvalidUserInputException InvalidDirectionException =
+            new InvalidUserInputException
+                    ("Error: invalid position direction");
+
     public InvalidUserInputException() {
     }
 
