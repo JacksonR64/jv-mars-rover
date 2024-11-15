@@ -10,14 +10,14 @@ import static org.example.Settings.X_AXIS_MIN;
 import static org.example.Settings.Y_AXIS_MIN;
 import static org.junit.jupiter.api.Assertions.*;
 
-class InputTest {
+class PlateauCreationParserTest {
 
     @Test
     @DisplayName("valid expected inputs return correct PlateauSize")
     void plateauCreationParserValidInputTest() {
         // Arrange
         String input1 = "1 1";
-        String input2 = "0 0";
+        String input2 = "5 5";
         String input3 = "99 99";
         String input4 = "1234 9876";
 
@@ -29,7 +29,7 @@ class InputTest {
 
         // Assert
         assertArrayEquals(new int[]{1, 1}, new int[]{expected1.getxAxis(), expected1.getyAxis()});
-        assertArrayEquals(new int[]{0, 0}, new int[]{expected2.getxAxis(), expected2.getyAxis()});
+        assertArrayEquals(new int[]{5, 5}, new int[]{expected2.getxAxis(), expected2.getyAxis()});
         assertArrayEquals(new int[]{99, 99}, new int[]{expected3.getxAxis(), expected3.getyAxis()});
         assertArrayEquals(new int[]{1234, 9876}, new int[]{expected4.getxAxis(), expected4.getyAxis()});
     }
