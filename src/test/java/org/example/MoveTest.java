@@ -3,8 +3,7 @@ package org.example;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.example.Move.move;
-import static org.example.Rotate.rotate;
+import static org.example.Position.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MoveTest {
@@ -13,40 +12,22 @@ class MoveTest {
     @DisplayName("returns correct updated position when moved")
     void moveTest() {
         // Arrange
-        Position facingNorth = new Position(5, 5, DIRECTION.N);
-        Position facingEast = new Position(5, 5, DIRECTION.E);
-        Position facingSouth = new Position(5, 5, DIRECTION.S);
-        Position facingWest = new Position(5, 5, DIRECTION.W);
+        Rover rover1 = new Rover(facingNorth);
+        Rover rover2 = new Rover(facingEast);
+        Rover rover3 = new Rover(facingSouth);
+        Rover rover4 = new Rover(facingWest);
 
         // Act
-        Position result1 = move(facingNorth, MOVEMENT_INSTRUCTION.M);
-        Position result2 = move(facingEast, MOVEMENT_INSTRUCTION.M);
-        Position result3 = move(facingSouth, MOVEMENT_INSTRUCTION.M);
-        Position result4 = move(facingWest, MOVEMENT_INSTRUCTION.M);
-
+        rover1.move(MOVEMENT_INSTRUCTION.M);
+        rover2.move(MOVEMENT_INSTRUCTION.M);
+        rover3.move(MOVEMENT_INSTRUCTION.M);
+        rover4.move(MOVEMENT_INSTRUCTION.M);
 
         // Assert
-        assertAll(
-                () -> assertEquals(6, result1.getX()),
-                () -> assertEquals(5, result1.getY())
-        );
-        assertAll(
-                () -> assertEquals(5, result2.getX()),
-                () -> assertEquals(6, result2.getY())
-        );
-        assertAll(
-                () -> assertEquals(4, result3.getX()),
-                () -> assertEquals(5, result3.getY())
-        );
-        assertAll(
-                () -> assertEquals(5, result4.getX()),
-                () -> assertEquals(4, result4.getY())
-        );
-        assertEquals(6, result1.getX());
-        assertEquals(6, result2.getY());
-        assertEquals(4, result3.getX());
-        assertEquals(4, result4.getY());
-
+        assertEquals(new Rover(new Position(6, 5,DIRECTION.N)), rover1);
+        assertEquals(new Rover(new Position(5, 6,DIRECTION.E)), rover2);
+        assertEquals(new Rover(new Position(4, 5,DIRECTION.S)), rover3);
+        assertEquals(new Rover(new Position(5, 4,DIRECTION.W)), rover4);
 
     }
 }

@@ -2,8 +2,11 @@ package org.example;
 
 import static org.example.Input.InvalidUserInputException.InvalidDirectionException;
 
-public class Move {
-    public static Position move (Position position, MOVEMENT_INSTRUCTION movementInstruction){
+public interface Movable {
+    Position getPosition();
+
+    default void move(MOVEMENT_INSTRUCTION movementInstruction){
+        Position position = getPosition();
         switch (position.getFacing()) {
             case DIRECTION.N:
                 position.setX(position.getX() + 1);
@@ -20,6 +23,5 @@ public class Move {
             default:
                 throw InvalidDirectionException;
         }
-        return position;
     }
 }
