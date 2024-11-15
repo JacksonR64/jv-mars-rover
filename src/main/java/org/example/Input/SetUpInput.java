@@ -1,7 +1,5 @@
 package org.example.Input;
 
-import org.example.Rover;
-
 import java.util.Scanner;
 
 import static org.example.Input.PlateauCreationParser.plateauCreationParser;
@@ -24,13 +22,13 @@ public class SetUpInput {
             try {
                 String input = scanner.nextLine();
                 if (plateauCreationParser(input)){
-                    System.out.println("Valid input accepted, Plateau created.\n");
+                    System.out.println("\nValid input accepted, Plateau created.\n");
                     break;
                 } else {
                     System.out.println("Invalid input, Please try again.");
                 }
             } catch (InvalidUserInputException e) {
-                System.out.println(e.getMessage() + " Please try again!!!");;
+                System.out.println(e.getMessage() + " Please try again!!!");
             }
         }
     }
@@ -46,7 +44,7 @@ public class SetUpInput {
                     System.out.println("Invalid input, Please try again.");
                 }
             } catch (InvalidUserInputException e) {
-                System.out.println(e.getMessage() + " Please try again!!!");;
+                System.out.println(e.getMessage() + " Please try again!!!");
             }
         }
     }

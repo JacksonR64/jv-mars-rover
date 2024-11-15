@@ -9,11 +9,11 @@ import static org.example.Input.InvalidUserInputException.generalRoverInputExcep
 public class RoverCreationParser {
     public static boolean roverCreationParser (String input){
         if (input == null || input.isEmpty()) throw generalRoverInputException;
-        int x = 0;
-        int y = 0;
-        DIRECTION facing = null;
+        int x;
+        int y;
+        DIRECTION facing;
 
-        String[] inputArray = input.split(" ");
+        String[] inputArray = input.toUpperCase().split(" ");
         if (inputArray.length != 3) throw generalRoverInputException;
 
 

@@ -1,5 +1,6 @@
 package org.example;
 
+import static org.example.Input.InstructionInput.instructionInput;
 import static org.example.Input.SetUpInput.setUpInput;
 import static org.example.Rover.roverList;
 
@@ -8,16 +9,15 @@ public class Main {
 
         System.out.println("Hello world!");
 
+
+
+
         setUpInput();
         Rover rover1 = roverList.get(0);
-
         System.out.println("Before moves: " + rover1);
-
-        rover1.rotate(ROTATE_INSTRUCTION.R);
-        rover1.move(MOVEMENT_INSTRUCTION.M);
-
-
+        instructionInput();
         System.out.println("After moves: " + rover1);
+
 
 
 /*

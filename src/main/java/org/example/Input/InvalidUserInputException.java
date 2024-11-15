@@ -26,6 +26,10 @@ public class InvalidUserInputException extends RuntimeException {
             new InvalidUserInputException
                     ("Error: Please enter exactly 3 values (X, Y, Direction) to create rover.");
 
+    public static InvalidUserInputException generalInstructionInputException =
+            new InvalidUserInputException
+                    ("Error: Please enter only valid Instructions. E.G. 'LMLMLMLMM'");
+
     public InvalidUserInputException() {
     }
 
