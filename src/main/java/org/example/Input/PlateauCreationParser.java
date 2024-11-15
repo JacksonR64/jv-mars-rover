@@ -1,12 +1,13 @@
 package org.example.Input;
 
+import org.example.Plateau;
 import org.example.PlateauSize;
 
 import static org.example.Input.InvalidUserInputException.*;
 import static org.example.Settings.*;
 
 public class PlateauCreationParser {
-    public static PlateauSize plateauCreationParser (String input) {
+    public static boolean plateauCreationParser (String input) {
 
         if (input == null || input.isEmpty()) throw generalPlateauSizeInputException;
         int x = 0;
@@ -37,7 +38,8 @@ public class PlateauCreationParser {
             }
             else throw generalPlateauSizeInputException;
         }
-        return new PlateauSize(x, y);
+        new Plateau(new PlateauSize(x, y));
+        return true;
     }
 
 }

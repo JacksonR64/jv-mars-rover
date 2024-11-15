@@ -1,16 +1,32 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Rover implements Movable, Positionable{
+
+    public static int roverCount = 0;
+    public static ArrayList<Rover> roverList = new ArrayList<>();
+    private int id;
     private Position position;
+
 
     // constructor
     public Rover(Position position) {
         this.position = position;
+        this.id = roverCount++;
+        roverList.add(this);
         }
 
     // getters and setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Position getPosition() {
         return position;
     }
@@ -66,5 +82,13 @@ public class Rover implements Movable, Positionable{
     @Override
     public int hashCode() {
         return Objects.hashCode(position);
+    }
+
+    @Override
+    public String toString() {
+        return "Rover{" +
+                "id=" + id +
+                ", position=" + position +
+                '}';
     }
 }

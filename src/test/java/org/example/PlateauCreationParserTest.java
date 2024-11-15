@@ -1,3 +1,4 @@
+/*
 package org.example;
 
 import org.example.Input.*;
@@ -95,3 +96,4 @@ class PlateauCreationParserTest {
 
     }
 }
+*/

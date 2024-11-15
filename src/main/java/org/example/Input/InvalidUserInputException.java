@@ -22,6 +22,10 @@ public class InvalidUserInputException extends RuntimeException {
             new InvalidUserInputException
                     ("Error: invalid position direction");
 
+    public static InvalidUserInputException generalRoverInputException =
+            new InvalidUserInputException
+                    ("Error: Please enter exactly 3 values (X, Y, Direction) to create rover.");
+
     public InvalidUserInputException() {
     }
 

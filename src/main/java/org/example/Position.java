@@ -53,4 +53,13 @@ public class Position implements Positionable{
     public int hashCode() {
         return Objects.hash(x, y, facing);
     }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "facing=" + facing +
+                ", x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }
