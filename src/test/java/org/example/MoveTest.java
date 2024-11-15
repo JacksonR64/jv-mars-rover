@@ -12,22 +12,22 @@ class MoveTest {
     @DisplayName("returns correct updated position when moved")
     void moveTest() {
         // Arrange
-        Rover rover1 = new Rover(facingNorth);
-        Rover rover2 = new Rover(facingEast);
-        Rover rover3 = new Rover(facingSouth);
-        Rover rover4 = new Rover(facingWest);
+        Rover test1 = new Rover(facingNorth);
+        Rover test2 = new Rover(facingEast);
+        Rover test3 = new Rover(facingSouth);
+        Rover test4 = new Rover(facingWest);
 
         // Act
-        rover1.move(MOVEMENT_INSTRUCTION.M);
-        rover2.move(MOVEMENT_INSTRUCTION.M);
-        rover3.move(MOVEMENT_INSTRUCTION.M);
-        rover4.move(MOVEMENT_INSTRUCTION.M);
+        test1.move(MOVEMENT_INSTRUCTION.M);
+        test2.move(MOVEMENT_INSTRUCTION.M);
+        test3.move(MOVEMENT_INSTRUCTION.M);
+        test4.move(MOVEMENT_INSTRUCTION.M);
 
         // Assert
-        assertEquals(new Rover(new Position(6, 5,DIRECTION.N)), rover1);
-        assertEquals(new Rover(new Position(5, 6,DIRECTION.E)), rover2);
-        assertEquals(new Rover(new Position(4, 5,DIRECTION.S)), rover3);
-        assertEquals(new Rover(new Position(5, 4,DIRECTION.W)), rover4);
+        assertEquals(new Rover(new Position(6, 5,DIRECTION.N)), test1);
+        assertEquals(new Rover(new Position(5, 6,DIRECTION.E)), test2);
+        assertEquals(new Rover(new Position(4, 5,DIRECTION.S)), test3);
+        assertEquals(new Rover(new Position(5, 4,DIRECTION.W)), test4);
 
     }
 }

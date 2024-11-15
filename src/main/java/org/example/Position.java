@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Position implements Positionable{
     public static DIRECTION[] DIRECTIONS = {DIRECTION.N, DIRECTION.E, DIRECTION.S, DIRECTION.W};
-    public static int totalDirectionCount = DIRECTIONS.length - 1;
+    public static int lastCardinalPointIndex = DIRECTIONS.length - 1;
     public static Position facingNorth = new Position(5, 5, DIRECTION.N);
     public static Position facingEast = new Position(5, 5, DIRECTION.E);
     public static Position facingSouth = new Position(5, 5, DIRECTION.S);
