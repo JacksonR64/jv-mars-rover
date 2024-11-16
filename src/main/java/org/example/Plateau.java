@@ -50,4 +50,5 @@ public class Plateau {
         this.plateauSize = plateauSize;
     }
 
+
 }

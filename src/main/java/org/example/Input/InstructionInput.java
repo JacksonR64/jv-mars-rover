@@ -21,7 +21,7 @@ public class InstructionInput {
 
         while (true) {
             try {
-                System.out.println("Please enter instructions: ");
+                System.out.print(INSTRUCTION_PROMPT_MESSAGE);
                 input = scanner.nextLine();
 
                 if (input.equalsIgnoreCase("END")) break;
@@ -33,20 +33,21 @@ public class InstructionInput {
                             roverList.get(0).rotate((ROTATE_INSTRUCTION) instruction);
 
                     errorCount = 0;
-                    System.out.println(VALID_INPUT_MESSAGE);
-                    System.out.println(roverList.get(0) + "\n");
+                    System.out.print(VALID_INPUT_MESSAGE);
                 }
             } catch (Exception e) {
                 //throw new RuntimeException(e);
                 errorCount++;
                 if (errorCount < INSTRUCTION_ATTEMPT_WARMING_LIMIT)
-                    System.out.println(INVALID_INPUT_MESSAGE);
+                    System.out.print(INVALID_INPUT_MESSAGE);
                 else if (errorCount < INSTRUCTION_ATTEMPT_END_LIMIT)
-                    System.out.println(INVALID_INPUT_MESSAGE + DETAILED_INSTRUCTION_MESSAGE);
+                    System.out.print(INVALID_INPUT_MESSAGE + DETAILED_INSTRUCTION_MESSAGE);
                 else if (errorCount == INSTRUCTION_ATTEMPT_END_LIMIT)
-                    System.out.println(INVALID_INPUT_MESSAGE + FINAL_WARNING + DETAILED_INSTRUCTION_MESSAGE);
+                    System.out.print(INVALID_INPUT_MESSAGE + FINAL_WARNING + DETAILED_INSTRUCTION_MESSAGE);
                 else throw generalInstructionInputException;
             }
+            System.out.print(roverList.get(0));
+
         }
     }
 }

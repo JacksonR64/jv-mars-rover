@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import static org.example.Plateau.plateauList;
+import static org.example.Settings.*;
 
 public class Rover implements Movable, Positionable{
 
@@ -28,10 +29,11 @@ public class Rover implements Movable, Positionable{
             position.setIsAlive(true);
             this.isAlive = true;
             plateau.objectList.add(this);
+            System.out.println(ROVER_CREATED_MESSAGE);
 
         }
         else {
-            System.out.println("Rover placed out of bounds and exploded on impact ‼️");
+            System.out.println(ROVER_PLACED_OOB_MESSAGE);
         }
     }
 
@@ -119,9 +121,9 @@ public class Rover implements Movable, Positionable{
     public String toString() {
         return "Rover{" +
                 "id=" + id +
+                ", plateau id=" + plateau.plateauID +
                 ", isAlive=" + isAlive +
                 ", position=" + position +
-                ", plateau=" + plateau.getPlateauID() +
                 '}';
     }
 }

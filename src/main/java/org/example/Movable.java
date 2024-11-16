@@ -3,10 +3,9 @@ package org.example;
 import java.util.Arrays;
 
 import static org.example.Input.InvalidUserInputException.InvalidDirectionException;
-import static org.example.Input.InvalidUserInputException.generalRoverInputException;
 import static org.example.Position.DIRECTIONS;
 import static org.example.Position.lastCardinalPointIndex;
-import static org.example.Settings.DEFAULT_TICK;
+import static org.example.Settings.*;
 
 public interface Movable {
     Position getPosition();
@@ -15,7 +14,6 @@ public interface Movable {
 
     default void move(MOVEMENT_INSTRUCTION movementInstruction) {
         if (!isInBounds()) {
-            System.out.println("Move failed: Rover is out of bounds.");
             return;
         }
 
@@ -38,7 +36,6 @@ public interface Movable {
         int newCardinalIndex = switch (rotateInstruction) {
             case ROTATE_INSTRUCTION.L -> (currentCardinalIndex - 1 + indexTotal) % indexTotal;
             case ROTATE_INSTRUCTION.R -> (currentCardinalIndex + 1 + indexTotal) % indexTotal;
-            default -> throw generalRoverInputException;
         };
         position.setFacing(Position.DIRECTIONS[newCardinalIndex]);
     }
@@ -56,12 +53,9 @@ public interface Movable {
                     && position.getY() < plateauSize.getyAxisEnd());
         }
 
-//        System.out.println("BOOOOOOM 💥💥💥 ");
-
         int axisPosition = switch (facing) {
             case DIRECTION.N, DIRECTION.S -> position.getX();
             case DIRECTION.E, DIRECTION.W -> position.getY();
-            default -> throw generalRoverInputException;
         };
 
         int boundaryLimit = switch (facing) {
@@ -69,22 +63,17 @@ public interface Movable {
             case DIRECTION.E -> plateauSize.getyAxisEnd();
             case DIRECTION.S -> plateauSize.getxAxisStart();
             case DIRECTION.W -> plateauSize.getyAxisStart();
-            default -> throw generalRoverInputException;
         };
 
 
         boolean headingOutwards = (facing == DIRECTION.N || facing == DIRECTION.E);
         boolean headingInwards =  (facing == DIRECTION.S || facing == DIRECTION.W);
 
-        System.out.println("HEADING OUT: " + headingOutwards
-                + "\nHEADING IN: " + headingInwards +
-                "INDEX: " + axisPosition);
-
         if (headingOutwards && axisPosition + DEFAULT_TICK >= boundaryLimit) {
-            System.out.println("Out of bounds - BONK!");
+            System.out.print(ROVER_HEADING_OOB_MESSAGE);
             return false;
         } else if (headingInwards && axisPosition - DEFAULT_TICK <= boundaryLimit) {
-            System.out.println("Out of bounds - BONK!");
+            System.out.print(ROVER_HEADING_OOB_MESSAGE);
             return false;
         }
         return true;

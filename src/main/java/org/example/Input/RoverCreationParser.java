@@ -1,5 +1,4 @@
 package org.example.Input;
-
 import org.example.DIRECTION;
 import org.example.Position;
 import org.example.Rover;

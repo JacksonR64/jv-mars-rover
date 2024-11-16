@@ -4,48 +4,52 @@ import java.util.Scanner;
 
 import static org.example.Input.PlateauCreationParser.plateauCreationParser;
 import static org.example.Input.RoverCreationParser.roverCreationParser;
+import static org.example.Settings.*;
 
 public class SetUpInput {
-    public static void setUpInput () {
+    public static void setUpInput() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Please enter Plateau size X and Y: ");
         setUpPlateau(scanner);
 
-        System.out.println("Please enter Rover X, Y, and Facing Direction: ");
         SetUpRover(scanner);
 
     }
 
     private static void setUpPlateau(Scanner scanner) {
-        while (true){
+        System.out.println(PLATEAU_SET_UP_MESSAGE);
+        while (true) {
             try {
                 String input = scanner.nextLine();
-                if (plateauCreationParser(input)){
-                    System.out.println("\nValid input accepted, Plateau created.\n");
+                if (plateauCreationParser(input)) {
+                    System.out.print(PLATEAU_CREATED_MESSAGE);
                     break;
                 } else {
-                    System.out.println("Invalid input, Please try again.");
+                    System.out.print(INVALID_INPUT_MESSAGE);
                 }
             } catch (InvalidUserInputException e) {
-                System.out.println(e.getMessage() + " Please try again!!!");
+                System.out.println(e.getMessage());
+                System.out.println(TRY_AGAIN_MESSAGE);
             }
         }
     }
 
     private static void SetUpRover(Scanner scanner) {
+        System.out.print(ROVER_SET_UP_MESSAGE);
         while (true){
             try {
                 String input = scanner.nextLine();
                 if (roverCreationParser(input)){
-                    System.out.println("Valid input accepted, Rover created.\n");
+//                    System.out.println(ROVER_CREATED_MESSAGE);
                     break;
                 } else {
-                    System.out.println("Invalid input, Please try again.");
+                    System.out.print(INVALID_INPUT_MESSAGE);
                 }
             } catch (InvalidUserInputException e) {
-                System.out.println(e.getMessage() + " Please try again!!!");
+                System.out.print(e.getMessage());
+                System.out.print(TRY_AGAIN_MESSAGE);
             }
+
         }
     }
 }

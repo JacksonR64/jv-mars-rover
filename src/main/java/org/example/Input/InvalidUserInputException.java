@@ -5,9 +5,9 @@ import static org.example.Settings.*;
 public class InvalidUserInputException extends RuntimeException {
     public static InvalidUserInputException generalPlateauSizeInputException =
             new InvalidUserInputException
-                    ("Error: Please enter exactly 2 values to create plateau." +
-                                                "\nX axis min: " + X_AXIS_MIN +
-                                                "\nY axis min: " + Y_AXIS_MIN);
+                    ("Error: Please enter exactly 2 values to create plateau.\n" +
+                                                "(X: min:" + X_AXIS_MIN + " - max:" + X_AXIS_MAX + ")\n" +
+                                                "(Y min:" + Y_AXIS_MIN + " - max: " + Y_AXIS_MAX);
     public static InvalidUserInputException InvalidXAxisSizeInputException =
             new InvalidUserInputException
                     ("Error: Please enter Valid Size for X axis." +
