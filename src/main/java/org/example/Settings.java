@@ -11,6 +11,7 @@ public class Settings {
     public static final String UNDERLINE = "\u001B[3m";
 
 
+    public static final int DEFAULT_TICK = 1;
     public static final int X_AXIS_MIN = 1;
     public static final int Y_AXIS_MIN = 1;
     public static final int INSTRUCTION_ATTEMPT_WARMING_LIMIT = 3;

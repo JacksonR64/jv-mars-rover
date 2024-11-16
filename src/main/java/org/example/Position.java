@@ -12,12 +12,24 @@ public class Position implements Positionable{
 
     private int x;
     private int y;
-    private DIRECTION facing; // this type can be whatever your direction enum is called
+    private DIRECTION facing;
+    private boolean isAlive;
 
     public Position(int x, int y, DIRECTION facing) {
         this.x = x;
         this.y = y;
         this.facing = facing;
+        this.isAlive = false;
+    }
+
+    @Override
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+
+    @Override
+    public void setIsAlive(boolean isAlive) {
+        this.isAlive = isAlive;
     }
 
     public int getX() {

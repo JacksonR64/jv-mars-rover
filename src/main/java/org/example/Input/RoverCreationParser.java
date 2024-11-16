@@ -7,7 +7,7 @@ import org.example.Rover;
 import static org.example.Input.InvalidUserInputException.generalRoverInputException;
 
 public class RoverCreationParser {
-    public static boolean roverCreationParser (String input){
+    public static boolean roverCreationParser (String input) {
         if (input == null || input.isEmpty()) throw generalRoverInputException;
         int x;
         int y;
@@ -17,9 +17,9 @@ public class RoverCreationParser {
         if (inputArray.length != 3) throw generalRoverInputException;
 
 
-        if (inputArray[0].matches("[0-9]*"))
+        if (inputArray[0].matches("[0-9]*")) {
             x = Integer.parseInt(inputArray[0]);
-        else throw generalRoverInputException;
+        } else throw generalRoverInputException;
 
         if (inputArray[1].matches("[0-9]*"))
             y = Integer.parseInt(inputArray[1]);
@@ -29,7 +29,7 @@ public class RoverCreationParser {
             facing = DIRECTION.valueOf(inputArray[2]);
         else throw generalRoverInputException;
 
-        new Rover(new Position(x,y,facing));
+        new Rover(new Position(x, y, facing));
         return true;
     }
 }

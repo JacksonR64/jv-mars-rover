@@ -2,6 +2,7 @@ package org.example;
 
 import static org.example.Input.InstructionInput.instructionInput;
 import static org.example.Input.SetUpInput.setUpInput;
+import static org.example.Rover.roverCount;
 import static org.example.Rover.roverList;
 
 public class Main {
@@ -13,12 +14,12 @@ public class Main {
 
 
         setUpInput();
-        Rover rover1 = roverList.get(0);
-        System.out.println("Before moves: " + rover1);
-        instructionInput();
-        System.out.println("After moves: " + rover1);
-
-
+        if (roverCount != 0) {
+            Rover rover1 = roverList.get(0);
+            System.out.println("Before moves: " + rover1);
+            instructionInput();
+            System.out.println("After moves: " + rover1);
+        }
 
 /*
         Rover rover1 = new Rover(new Position(5,5,DIRECTION.E));
