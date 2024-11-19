@@ -23,6 +23,15 @@ public class Settings {
     public static final int INSTRUCTION_ATTEMPT_END_LIMIT = 5;
 
 
+    public static final boolean EXAMPLE_MODE_ON = true;
+    public static final String[] EXAMPLE_INPUT = {
+            "5 5",
+            "1 2 N",
+            "LMLMLMLMM",
+            "3 3 E",
+            "MMRMMRMRRM"};
+
+
 
     public static final String VALID_INPUT_MESSAGE = GREEN + "Input Valid! \nMoved: ";
     public static final String INVALID_INPUT_MESSAGE = RED + "Input Invalid! \nNot Moved: ";
@@ -55,7 +64,7 @@ public class Settings {
             "Rover placed out of bounds and exploded on impact 💥💥️"
             + RESET + "\n";
     public static final String ROVER_HEADING_OOB_MESSAGE =
-            "\n" + RED +
+            "\n" + YELLOW +
             "Rover hit a boundary wall and bounced back - BONK ‼️"
             + RESET + "\n";
     public static final String DETAILED_INSTRUCTION_MESSAGE =

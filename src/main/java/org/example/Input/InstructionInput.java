@@ -8,29 +8,34 @@ import java.util.Scanner;
 
 import static org.example.Input.InstructionParser.instructionParser;
 import static org.example.Input.InvalidUserInputException.generalInstructionInputException;
-import static org.example.InstructionsLog.instructionsLog;
+import static org.example.InstructionsLog.*;
 import static org.example.Rover.roverList;
 import static org.example.Settings.*;
+import static org.example.Input.SetUpInput.*;
 
 public class InstructionInput {
     public static void instructionInput() {
-        Scanner scanner = new Scanner(System.in);
-
         String input;
         int errorCount = 0;
 
-        while (true) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (inputCounter < totalInitialInputs) {
             try {
                 System.out.print(INSTRUCTION_PROMPT_MESSAGE);
-                input = scanner.nextLine();
 
+                if (EXAMPLE_MODE_ON) {
+                    System.out.println(EXAMPLE_INPUT[inputCounter]);
+                    instructionParser(EXAMPLE_INPUT[inputCounter]);
+                    return;}
+                else input = scanner.nextLine();
                 if (input.equalsIgnoreCase("END")) break;
                 if (instructionParser(input)) {
                     for (INSTRUCTION instruction : instructionsLog.getLast())
                         if (instruction.getClass().getSimpleName().equals("MOVEMENT_INSTRUCTION"))
-                            roverList.get(0).move((MOVEMENT_INSTRUCTION) instruction);
+                            roverList.getLast().move((MOVEMENT_INSTRUCTION) instruction);
                         else if (instruction.getClass().getSimpleName().equals("ROTATE_INSTRUCTION"))
-                            roverList.get(0).rotate((ROTATE_INSTRUCTION) instruction);
+                            roverList.getLast().rotate((ROTATE_INSTRUCTION) instruction);
 
                     errorCount = 0;
                     System.out.print(VALID_INPUT_MESSAGE);
@@ -46,7 +51,7 @@ public class InstructionInput {
                     System.out.print(INVALID_INPUT_MESSAGE + FINAL_WARNING + DETAILED_INSTRUCTION_MESSAGE);
                 else throw generalInstructionInputException;
             }
-            System.out.print(roverList.get(0));
+            System.out.print(roverList.getLast());
 
         }
     }
