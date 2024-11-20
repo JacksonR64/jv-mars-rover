@@ -3,39 +3,49 @@ package org.example.Input;
 import org.example.Rover;
 import java.util.Scanner;
 
+import static org.example.Input.InstructionInput.errorCount;
 import static org.example.Input.InstructionInput.instructionInput;
 import static org.example.Input.PlateauCreationParser.plateauCreationParser;
 import static org.example.Input.RoverCreationParser.roverCreationParser;
+import static org.example.Plateau.plateauList;
 import static org.example.Rover.roverList;
 import static org.example.Settings.*;
 
 public class SetUpInput {
-    public static int inputCounter = -1;
+    public static int inputCounter = 0;
     public static int totalInitialInputs = 0;
 
     public static void setUpInput() {
 
         Scanner scanner = new Scanner(System.in);
+        Rover rover1 = null;
 
+        if (CUSTOM_EXAMPLE_ON) EXAMPLE_INPUT = CUSTOM_EXAMPLE_INPUT;
         if (EXAMPLE_MODE_ON) {
             totalInitialInputs = EXAMPLE_INPUT.length;
         }
         else totalInitialInputs = 3;
 
-        while (inputCounter++ < totalInitialInputs) {
+        while (inputCounter < totalInitialInputs) {
             if (inputCounter == 0) {
                 setUpPlateau(scanner);
+                System.out.println(GREEN + "\n              NEW: " + plateauList.getLast() + RESET);
             }
-            else if (inputCounter % 2 != 0) {
+            else if ((inputCounter - errorCount)% 2 != 0) {
                 SetUpRover(scanner);
-            }
-            else if (inputCounter % 2 == 0) {
-                Rover rover1 = roverList.getLast();
+                rover1 = roverList.getLast();
                 System.out.print(GREEN + "             START: " + rover1 + RESET);
+            }
+            else if ((inputCounter - errorCount )% 2 == 0) {
                 instructionInput();
                 System.out.print(GREEN + "               END: " + rover1 + RESET);
             }
+            inputCounter++;
         }
+        System.out.println();
+        System.out.println(GREEN + "\n             END: " + plateauList.getLast() + RESET);
+
+        if (EXAMPLE_MODE_ON) roverList.forEach(r -> System.out.println(r.getPosition().toSimpleString()));
     }
 
     private static void setUpPlateau(Scanner scanner) {

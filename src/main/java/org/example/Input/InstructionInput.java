@@ -15,12 +15,13 @@ import static org.example.Settings.*;
 import static org.example.Input.SetUpInput.*;
 
 public class InstructionInput {
-    private static int instructionCount;
+    public static int instructionCount;
+    public static int errorCount;
 
     public static void instructionInput() {
         instructionCount = 1;
+        errorCount = 0;
         String input;
-        int errorCount = 0;
 
         Scanner scanner = new Scanner(System.in);
 
@@ -36,7 +37,6 @@ public class InstructionInput {
                         executeInstruction(instruction);
                     }
 
-                    inputCounter++;
                     return;
                 }
 
@@ -52,6 +52,7 @@ public class InstructionInput {
                 }
             } catch (Exception e) {
                 errorCount++;
+                inputCounter++;
                 if (errorCount < INSTRUCTION_ATTEMPT_WARMING_LIMIT) {
                     System.out.print(INVALID_INPUT_MESSAGE);
                 } else if (errorCount < INSTRUCTION_ATTEMPT_END_LIMIT) {

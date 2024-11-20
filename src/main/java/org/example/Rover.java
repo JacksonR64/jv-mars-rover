@@ -8,7 +8,7 @@ import static org.example.Settings.*;
 
 public class Rover implements Movable, Positionable{
 
-    public static int roverCount = 0;
+    public static int roverCount = 1;
     public static ArrayList<Rover> roverList = new ArrayList<>();
     final private int id;
     private boolean isAlive;
@@ -111,7 +111,7 @@ public class Rover implements Movable, Positionable{
     @Override
     public String toString() {
         return "Rover{" +
-                "id=" + id +
+                "ID=" + id +
                 " " + position +
                 '}';
     }

@@ -32,4 +32,13 @@ public class PlateauSize {
         return yAxisEnd;
     }
 
+    @Override
+    public String toString() {
+        return "PlateauSize{" +
+                "X = " + xAxisStart +
+                ":" + xAxisEnd +
+                ", Y = " + yAxisStart +
+                ":" + yAxisEnd +
+                '}';
+    }
 }

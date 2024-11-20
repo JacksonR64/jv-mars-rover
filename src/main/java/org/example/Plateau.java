@@ -50,5 +50,12 @@ public class Plateau {
         this.plateauSize = plateauSize;
     }
 
-
+    @Override
+    public String toString() {
+        return "Plateau{" +
+                "ID=" + plateauID +
+                ", " + plateauSize +
+                ", objectCount=" + objectList.size() +
+                '}';
+    }
 }

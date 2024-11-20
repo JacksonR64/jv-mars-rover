@@ -3,7 +3,6 @@ package org.example;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.example.Position.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MoveTest {
@@ -12,22 +11,26 @@ class MoveTest {
     @DisplayName("returns correct updated position when moved")
     void moveTest() {
         // Arrange
-        Rover test1 = new Rover(facingNorth);
-        Rover test2 = new Rover(facingEast);
-        Rover test3 = new Rover(facingSouth);
-        Rover test4 = new Rover(facingWest);
+        Plateau plateau_10_10 = new Plateau(new PlateauSize(10,10));
+        Position facingNorth = new Position(5, 5, DIRECTION.N);
+        Position facingEast = new Position(5, 5, DIRECTION.E);
+        Position facingSouth = new Position(5, 5, DIRECTION.S);
+        Position facingWest = new Position(5, 5, DIRECTION.W);
+        Rover rover_5_5_N = new Rover(facingNorth);
+        Rover rover_5_5_E = new Rover(facingEast);
+        Rover rover_5_5_S = new Rover(facingSouth);
+        Rover rover_5_5_W = new Rover(facingWest);
 
         // Act
-        test1.move(MOVEMENT_INSTRUCTION.M);
-        test2.move(MOVEMENT_INSTRUCTION.M);
-        test3.move(MOVEMENT_INSTRUCTION.M);
-        test4.move(MOVEMENT_INSTRUCTION.M);
+        rover_5_5_N.move(MOVEMENT_INSTRUCTION.M);
+        rover_5_5_E.move(MOVEMENT_INSTRUCTION.M);
+        rover_5_5_S.move(MOVEMENT_INSTRUCTION.M);
+        rover_5_5_W.move(MOVEMENT_INSTRUCTION.M);
 
         // Assert
-        assertEquals(new Rover(new Position(6, 5,DIRECTION.N)), test1);
-        assertEquals(new Rover(new Position(5, 6,DIRECTION.E)), test2);
-        assertEquals(new Rover(new Position(4, 5,DIRECTION.S)), test3);
-        assertEquals(new Rover(new Position(5, 4,DIRECTION.W)), test4);
-
+        assertEquals(new Position(5, 6,DIRECTION.N), rover_5_5_N.getPosition());
+        assertEquals(new Position(6, 5,DIRECTION.E), rover_5_5_E.getPosition());
+        assertEquals(new Position(5, 4,DIRECTION.S), rover_5_5_S.getPosition());
+        assertEquals(new Position(4, 5,DIRECTION.W), rover_5_5_W.getPosition());
     }
 }
