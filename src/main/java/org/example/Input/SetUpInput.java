@@ -1,5 +1,6 @@
 package org.example.Input;
 
+import org.example.Rover;
 import java.util.Scanner;
 
 import static org.example.Input.InstructionInput.instructionInput;
@@ -14,43 +15,41 @@ public class SetUpInput {
 
     public static void setUpInput() {
 
-
-
-
         Scanner scanner = new Scanner(System.in);
 
         if (EXAMPLE_MODE_ON) {
             totalInitialInputs = EXAMPLE_INPUT.length;
         }
+        else totalInitialInputs = 3;
 
         while (inputCounter++ < totalInitialInputs) {
-            if (inputCounter == 0) setUpPlateau(scanner);
-
-            else if (inputCounter % 2 != 0) SetUpRover(scanner);
-
-            else if (inputCounter % 2 == 0) instructionInput();
+            if (inputCounter == 0) {
+                setUpPlateau(scanner);
+            }
+            else if (inputCounter % 2 != 0) {
+                SetUpRover(scanner);
+            }
+            else if (inputCounter % 2 == 0) {
+                Rover rover1 = roverList.getLast();
+                System.out.print(GREEN + "             START: " + rover1 + RESET);
+                instructionInput();
+                System.out.print(GREEN + "               END: " + rover1 + RESET);
+            }
         }
-        if (EXAMPLE_MODE_ON) System.out.println(roverList.getFirst());
-
-//            Rover rover1 = roverList.get(0);
-//            System.out.print(GREEN + "START: " + rover1 + RESET);
-//        instructionInput();
-//            System.out.print(GREEN + "END: " + rover1 + RESET);
-
-
-
     }
 
     private static void setUpPlateau(Scanner scanner) {
         String input;
         System.out.println(PLATEAU_SET_UP_MESSAGE);
-        while (inputCounter < EXAMPLE_INPUT.length) {
+        while (inputCounter < totalInitialInputs) {
             try {
                 if (EXAMPLE_MODE_ON) {
                     System.out.println(EXAMPLE_INPUT[inputCounter]);
                     plateauCreationParser(EXAMPLE_INPUT[inputCounter]);
+                    System.out.print(PLATEAU_CREATED_MESSAGE);
                     return;}
                 else input = scanner.nextLine();
+
                 if (plateauCreationParser(input)) {
                     System.out.print(PLATEAU_CREATED_MESSAGE);
                     break;
@@ -66,15 +65,20 @@ public class SetUpInput {
 
     private static void SetUpRover(Scanner scanner) {
         String input;
-        System.out.print(ROVER_SET_UP_MESSAGE);
-        while (inputCounter < EXAMPLE_INPUT.length){
+        while (inputCounter < totalInitialInputs){
+            System.out.print(ROVER_SET_UP_MESSAGE);
             try {
                 if (EXAMPLE_MODE_ON) {
                     System.out.println(EXAMPLE_INPUT[inputCounter]);
                     roverCreationParser(EXAMPLE_INPUT[inputCounter]);
+                    System.out.println(ROVER_CREATED_MESSAGE);
                     return;}
                 else input = scanner.nextLine();
+
+
                 if (roverCreationParser(input)){
+                    if (roverList.getLast().getIsAlive())
+                        System.out.println(ROVER_CREATED_MESSAGE);
                     break;
                 } else {
                     System.out.print(INVALID_INPUT_MESSAGE);

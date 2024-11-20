@@ -11,7 +11,6 @@ public interface Movable {
     Position getPosition();
     Plateau getPlateau();
 
-
     default void move(MOVEMENT_INSTRUCTION movementInstruction) {
         if (!isInBounds()) {
             return;
@@ -19,13 +18,12 @@ public interface Movable {
 
         Position position = getPosition();
         switch (position.getFacing()) {
-            case DIRECTION.N -> position.setX(position.getX() + DEFAULT_TICK);
-            case DIRECTION.E -> position.setY(position.getY() + DEFAULT_TICK);
-            case DIRECTION.S -> position.setX(position.getX() - DEFAULT_TICK);
-            case DIRECTION.W -> position.setY(position.getY() - DEFAULT_TICK);
+            case DIRECTION.N -> position.setY(position.getY() + DEFAULT_TICK);
+            case DIRECTION.E -> position.setX(position.getX() + DEFAULT_TICK);
+            case DIRECTION.S -> position.setY(position.getY() - DEFAULT_TICK);
+            case DIRECTION.W -> position.setX(position.getX() - DEFAULT_TICK);
             default -> throw InvalidDirectionException;
         }
-
     }
 
     default void rotate(ROTATE_INSTRUCTION rotateInstruction) {
@@ -37,6 +35,7 @@ public interface Movable {
             case ROTATE_INSTRUCTION.L -> (currentCardinalIndex - 1 + indexTotal) % indexTotal;
             case ROTATE_INSTRUCTION.R -> (currentCardinalIndex + 1 + indexTotal) % indexTotal;
         };
+
         position.setFacing(Position.DIRECTIONS[newCardinalIndex]);
     }
 
@@ -45,37 +44,30 @@ public interface Movable {
         Position position = getPosition();
         DIRECTION facing = position.getFacing();
 
-
+        // General bounds check if rover is not alive
         if (!position.getIsAlive()) {
-            return (position.getX() > plateauSize.getxAxisStart()
-                    && position.getX() < plateauSize.getxAxisEnd()
-                    && position.getY() > plateauSize.getyAxisStart()
-                    && position.getY() < plateauSize.getyAxisEnd());
+            return position.getX() >= plateauSize.getxAxisStart()
+                    && position.getX() <= plateauSize.getxAxisEnd()
+                    && position.getY() >= plateauSize.getyAxisStart()
+                    && position.getY() <= plateauSize.getyAxisEnd();
         }
 
+        // Determine axis position and boundary based on direction
         int axisPosition = switch (facing) {
-            case DIRECTION.N, DIRECTION.S -> position.getX();
-            case DIRECTION.E, DIRECTION.W -> position.getY();
+            case DIRECTION.N, DIRECTION.S -> position.getY(); // Y-axis for N/S
+            case DIRECTION.E, DIRECTION.W -> position.getX(); // X-axis for E/W
         };
 
         int boundaryLimit = switch (facing) {
-            case DIRECTION.N -> plateauSize.getxAxisEnd();
-            case DIRECTION.E -> plateauSize.getyAxisEnd();
-            case DIRECTION.S -> plateauSize.getxAxisStart();
-            case DIRECTION.W -> plateauSize.getyAxisStart();
+            case DIRECTION.N -> plateauSize.getyAxisEnd();
+            case DIRECTION.E -> plateauSize.getxAxisEnd();
+            case DIRECTION.S -> plateauSize.getyAxisStart();
+            case DIRECTION.W -> plateauSize.getxAxisStart();
         };
 
-
-        boolean headingOutwards = (facing == DIRECTION.N || facing == DIRECTION.E);
-        boolean headingInwards =  (facing == DIRECTION.S || facing == DIRECTION.W);
-
-        if (headingOutwards && axisPosition + DEFAULT_TICK >= boundaryLimit) {
-            System.out.print(ROVER_HEADING_OOB_MESSAGE);
+        // Check out-of-bounds conditions
+        if ((facing == DIRECTION.N || facing == DIRECTION.E) && axisPosition + DEFAULT_TICK > boundaryLimit) {
             return false;
-        } else if (headingInwards && axisPosition - DEFAULT_TICK <= boundaryLimit) {
-            System.out.print(ROVER_HEADING_OOB_MESSAGE);
-            return false;
-        }
-        return true;
+        } else return (facing != DIRECTION.S && facing != DIRECTION.W) || axisPosition - DEFAULT_TICK >= boundaryLimit;
     }
 }

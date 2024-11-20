@@ -10,10 +10,10 @@ public class Rover implements Movable, Positionable{
 
     public static int roverCount = 0;
     public static ArrayList<Rover> roverList = new ArrayList<>();
-    private int id;
+    final private int id;
     private boolean isAlive;
-    private Position position;
-    private Plateau plateau;
+    final private Position position;
+    final private Plateau plateau;
 
 
 
@@ -29,8 +29,6 @@ public class Rover implements Movable, Positionable{
             position.setIsAlive(true);
             this.isAlive = true;
             plateau.objectList.add(this);
-            System.out.println(ROVER_CREATED_MESSAGE);
-
         }
         else {
             System.out.println(ROVER_PLACED_OOB_MESSAGE);
@@ -38,17 +36,10 @@ public class Rover implements Movable, Positionable{
     }
 
     // getters and setters
-    public int getId() {return id;}
-
-    public void setId(int id) {this.id = id;}
 
     public Position getPosition() {return position;}
 
-    public void setPosition(Position position) {this.position = position;}
-
     public Plateau getPlateau() {return plateau;}
-
-    public void setPlateau(Plateau plateau) {this.plateau = plateau;}
 
     @Override
     public boolean getIsAlive() {
@@ -121,9 +112,7 @@ public class Rover implements Movable, Positionable{
     public String toString() {
         return "Rover{" +
                 "id=" + id +
-                ", plateau id=" + plateau.plateauID +
-                ", isAlive=" + isAlive +
-                ", position=" + position +
+                " " + position +
                 '}';
     }
 }
