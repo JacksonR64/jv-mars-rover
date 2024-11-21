@@ -85,7 +85,7 @@ MMRMMRMRRM
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/JacksonR64/jv-mars-rover.git
-   cd mars-rover
+   cd jv-mars-rover
    ```
 
 2. **Compile the Code**:
