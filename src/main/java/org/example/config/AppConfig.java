@@ -14,7 +14,7 @@ public class AppConfig {
 
     // EXAMPLE MODE SETTINGS
     public static final boolean EXAMPLE_MODE_ON = true;
-    public static final boolean CUSTOM_EXAMPLE_ON = true;
+    public static final boolean CUSTOM_EXAMPLE_ON = false;
 
 
     // COLOUR SETTINGS

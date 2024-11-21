@@ -10,7 +10,6 @@ import static org.example.config.MessageProvider.*;
 import static org.example.input.InstructionInput.errorCount;
 import static org.example.input.InstructionInput.instructionInput;
 import static org.example.input.PlateauCreationParser.plateauCreationParser;
-import static org.example.input.RoverCreationParser.roverCreationParser;
 import static org.example.entities.Plateau.plateauList;
 import static org.example.entities.Rover.roverList;
 import static org.example.config.AppConfig.*;
@@ -36,7 +35,7 @@ public class SetUpInput {
                 System.out.println(GREEN + "\n              NEW: " + plateauList.getLast() + RESET);
             }
             else if ((inputCounter - errorCount)% 2 != 0) {
-                SetUpRover(scanner);
+                RoverSetUp.setUpRover(scanner);
                 rover1 = roverList.getLast();
                 System.out.print(GREEN + "             START: " + rover1 + RESET);
             }
@@ -77,31 +76,4 @@ public class SetUpInput {
         }
     }
 
-    private static void SetUpRover(Scanner scanner) {
-        String input;
-        while (inputCounter < totalInitialInputs){
-            System.out.print(ROVER_SET_UP_MESSAGE);
-            try {
-                if (EXAMPLE_MODE_ON) {
-                    System.out.println(EXAMPLE_INPUT[inputCounter]);
-                    roverCreationParser(EXAMPLE_INPUT[inputCounter]);
-                    System.out.println(ROVER_CREATED_MESSAGE);
-                    return;}
-                else input = scanner.nextLine();
-
-
-                if (roverCreationParser(input)){
-                    if (roverList.getLast().getIsAlive())
-                        System.out.println(ROVER_CREATED_MESSAGE);
-                    break;
-                } else {
-                    System.out.print(INVALID_INPUT_MESSAGE);
-                }
-            } catch (InvalidUserInputException e) {
-                System.out.print(e.getMessage());
-                System.out.print(TRY_AGAIN_MESSAGE);
-            }
-
-        }
-    }
 }
