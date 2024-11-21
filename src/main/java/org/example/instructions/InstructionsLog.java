@@ -1,4 +1,6 @@
-package org.example;
+package org.example.instructions;
+
+import org.example.enums.INSTRUCTION;
 
 import java.util.ArrayList;
 

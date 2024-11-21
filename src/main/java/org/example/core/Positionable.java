@@ -1,4 +1,6 @@
-package org.example;
+package org.example.core;
+
+import org.example.enums.DIRECTION;
 
 public interface Positionable {
     boolean getIsAlive();

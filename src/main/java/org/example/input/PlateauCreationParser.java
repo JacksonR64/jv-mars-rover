@@ -1,10 +1,10 @@
-package org.example.Input;
+package org.example.input;
 
-import org.example.Plateau;
-import org.example.PlateauSize;
+import org.example.entities.Plateau;
+import org.example.entities.PlateauSize;
 
-import static org.example.Input.InvalidUserInputException.*;
-import static org.example.Settings.*;
+import static org.example.exceptions.InvalidUserInputException.*;
+import static org.example.config.AppConfig.*;
 
 public class PlateauCreationParser {
     public static boolean plateauCreationParser (String input) {

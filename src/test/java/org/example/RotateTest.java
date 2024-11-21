@@ -1,5 +1,11 @@
 package org.example;
 
+import org.example.core.Position;
+import org.example.entities.Plateau;
+import org.example.entities.PlateauSize;
+import org.example.entities.Rover;
+import org.example.enums.DIRECTION;
+import org.example.enums.ROTATE_INSTRUCTION;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

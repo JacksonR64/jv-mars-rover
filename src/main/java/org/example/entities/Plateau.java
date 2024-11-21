@@ -1,4 +1,6 @@
-package org.example;
+package org.example.entities;
+
+import org.example.core.Positionable;
 
 import java.util.ArrayList;
 

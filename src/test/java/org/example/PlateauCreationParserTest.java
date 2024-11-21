@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 
 import static org.example.Input.PlateauCreationParser.*;
-import static org.example.Settings.X_AXIS_MIN;
-import static org.example.Settings.Y_AXIS_MIN;
+import static org.example.config.AppConfig.X_AXIS_MIN;
+import static org.example.config.AppConfig.Y_AXIS_MIN;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlateauCreationParserTest {

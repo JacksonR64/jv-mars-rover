@@ -1,5 +1,10 @@
 package org.example;
 
+import org.example.core.Position;
+import org.example.entities.Plateau;
+import org.example.entities.PlateauSize;
+import org.example.entities.Rover;
+import org.example.enums.DIRECTION;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,10 +28,10 @@ class IsInBoundsTest {
         Rover rover_5_5_W = new Rover(facingWest);
 
         // Act
-        boolean result1 = rover_5_5_N.isInBounds();
-        boolean result2 = rover_5_5_E.isInBounds();
-        boolean result3 = rover_5_5_S.isInBounds();
-        boolean result4 = rover_5_5_W.isInBounds();
+        boolean result1 = rover_5_5_N.isInBounds(false);
+        boolean result2 = rover_5_5_E.isInBounds(false);
+        boolean result3 = rover_5_5_S.isInBounds(false);
+        boolean result4 = rover_5_5_W.isInBounds(false);
 
         // Assert
         assertTrue(result1);
@@ -50,10 +55,10 @@ class IsInBoundsTest {
         Rover rover_20_20_W = new Rover(facingWest);
 
         // Act
-        boolean result1 = rover_20_20_N.isInBounds();
-        boolean result2 = rover_20_20_E.isInBounds();
-        boolean result3 = rover_20_20_S.isInBounds();
-        boolean result4 = rover_20_20_W.isInBounds();
+        boolean result1 = rover_20_20_N.isInBounds(false);
+        boolean result2 = rover_20_20_E.isInBounds(false);
+        boolean result3 = rover_20_20_S.isInBounds(false);
+        boolean result4 = rover_20_20_W.isInBounds(false);
 
         // Assert
         assertFalse(result1);
@@ -77,10 +82,10 @@ class IsInBoundsTest {
         Rover rover_11_5_W = new Rover(facingWest);
 
         // Act
-        boolean result1 = rover_5_11_N.isInBounds();
-        boolean result2 = rover_11_5_E.isInBounds();
-        boolean result3 = rover_5_11_S.isInBounds();
-        boolean result4 = rover_11_5_W.isInBounds();
+        boolean result1 = rover_5_11_N.isInBounds(false);
+        boolean result2 = rover_11_5_E.isInBounds(false);
+        boolean result3 = rover_5_11_S.isInBounds(false);
+        boolean result4 = rover_11_5_W.isInBounds(false);
 
         // Assert
         assertFalse(result1);
@@ -99,15 +104,16 @@ class IsInBoundsTest {
         Position facingSouth = new Position(10, 10, DIRECTION.S);
         Position facingWest = new Position(10, 10, DIRECTION.W);
         Rover rover_10_10_N = new Rover(facingNorth);
+        rover_10_10_N.setIsAlive(false);
         Rover rover_10_10_E = new Rover(facingEast);
         Rover rover_10_10_S = new Rover(facingSouth);
         Rover rover_10_10_W = new Rover(facingWest);
 
         // Act
-        boolean result1 = rover_10_10_N.isInBounds();
-        boolean result2 = rover_10_10_E.isInBounds();
-        boolean result3 = rover_10_10_S.isInBounds();
-        boolean result4 = rover_10_10_W.isInBounds();
+        boolean result1 = rover_10_10_N.isInBounds(false);
+        boolean result2 = rover_10_10_E.isInBounds(false);
+        boolean result3 = rover_10_10_S.isInBounds(false);
+        boolean result4 = rover_10_10_W.isInBounds(false);
 
         // Assert
         assertTrue(result1);

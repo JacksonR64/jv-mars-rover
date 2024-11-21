@@ -1,9 +1,9 @@
-package org.example.Input;
-import org.example.DIRECTION;
-import org.example.Position;
-import org.example.Rover;
+package org.example.input;
+import org.example.enums.DIRECTION;
+import org.example.core.Position;
+import org.example.entities.Rover;
 
-import static org.example.Input.InvalidUserInputException.generalRoverInputException;
+import static org.example.exceptions.InvalidUserInputException.generalRoverInputException;
 
 public class RoverCreationParser {
     public static boolean roverCreationParser (String input) {

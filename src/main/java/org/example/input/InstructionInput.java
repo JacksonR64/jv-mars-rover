@@ -1,18 +1,20 @@
-package org.example.Input;
+package org.example.input;
 
-import org.example.INSTRUCTION;
-import org.example.MOVEMENT_INSTRUCTION;
-import org.example.ROTATE_INSTRUCTION;
-import org.example.Rover;
+import org.example.enums.INSTRUCTION;
+import org.example.enums.MOVEMENT_INSTRUCTION;
+import org.example.enums.ROTATE_INSTRUCTION;
+import org.example.entities.Rover;
 
 import java.util.Scanner;
 
-import static org.example.Input.InstructionParser.instructionParser;
-import static org.example.Input.InvalidUserInputException.generalInstructionInputException;
-import static org.example.InstructionsLog.*;
-import static org.example.Rover.roverList;
-import static org.example.Settings.*;
-import static org.example.Input.SetUpInput.*;
+import static org.example.config.ExampleConfig.*;
+import static org.example.config.MessageProvider.*;
+import static org.example.input.InstructionParser.instructionParser;
+import static org.example.exceptions.InvalidUserInputException.generalInstructionInputException;
+import static org.example.instructions.InstructionsLog.*;
+import static org.example.entities.Rover.roverList;
+import static org.example.config.AppConfig.*;
+import static org.example.input.SetUpInput.*;
 
 public class InstructionInput {
     public static int instructionCount;
@@ -72,7 +74,7 @@ public class InstructionInput {
         String instructionCountFormatted = String.format("%02d", instructionCount++);
 
         if (instruction instanceof MOVEMENT_INSTRUCTION) {
-            if (currentRover.isInBounds()) {
+            if (currentRover.isInBounds(true)) {
                 currentRover.move((MOVEMENT_INSTRUCTION) instruction);
                 System.out.println(instructionCountFormatted + ": " + instruction + MOVED_MESSAGE + currentRover);
             } else {

@@ -1,6 +1,6 @@
-package org.example.Input;
+package org.example.exceptions;
 
-import static org.example.Settings.*;
+import static org.example.config.AppConfig.*;
 
 public class InvalidUserInputException extends RuntimeException {
     public static InvalidUserInputException generalPlateauSizeInputException =

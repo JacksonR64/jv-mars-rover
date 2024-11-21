@@ -1,18 +1,24 @@
-package org.example;
+package org.example.core;
+
+import org.example.entities.Plateau;
+import org.example.entities.PlateauSize;
+import org.example.enums.DIRECTION;
+import org.example.enums.MOVEMENT_INSTRUCTION;
+import org.example.enums.ROTATE_INSTRUCTION;
 
 import java.util.Arrays;
 
-import static org.example.Input.InvalidUserInputException.InvalidDirectionException;
-import static org.example.Position.DIRECTIONS;
-import static org.example.Position.lastCardinalPointIndex;
-import static org.example.Settings.*;
+import static org.example.exceptions.InvalidUserInputException.InvalidDirectionException;
+import static org.example.core.Position.DIRECTIONS;
+import static org.example.core.Position.lastCardinalPointIndex;
+import static org.example.config.AppConfig.*;
 
 public interface Movable {
     Position getPosition();
     Plateau getPlateau();
 
     default void move(MOVEMENT_INSTRUCTION movementInstruction) {
-        if (!isInBounds()) {
+        if (!isInBounds(true)) {
             return;
         }
 
@@ -39,10 +45,13 @@ public interface Movable {
         position.setFacing(Position.DIRECTIONS[newCardinalIndex]);
     }
 
-    default boolean isInBounds() {
-        PlateauSize plateauSize = getPlateau().plateauSize;
+    default boolean isInBounds(boolean isMoving) {
+        PlateauSize plateauSize = getPlateau().getPlateauSize();
         Position position = getPosition();
         DIRECTION facing = position.getFacing();
+        int tick = 0;
+
+        if (isMoving) tick = DEFAULT_TICK;
 
         // General bounds check if rover is not alive
         if (!position.getIsAlive()) {
@@ -66,8 +75,8 @@ public interface Movable {
         };
 
         // Check out-of-bounds conditions
-        if ((facing == DIRECTION.N || facing == DIRECTION.E) && axisPosition + DEFAULT_TICK > boundaryLimit) {
+        if ((facing == DIRECTION.N || facing == DIRECTION.E) && axisPosition + tick > boundaryLimit) {
             return false;
-        } else return (facing != DIRECTION.S && facing != DIRECTION.W) || axisPosition - DEFAULT_TICK >= boundaryLimit;
+        } else return (facing != DIRECTION.S && facing != DIRECTION.W) || axisPosition - tick >= boundaryLimit;
     }
 }

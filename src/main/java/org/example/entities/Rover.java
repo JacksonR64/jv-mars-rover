@@ -1,12 +1,19 @@
-package org.example;
+package org.example.entities;
+
+import org.example.enums.DIRECTION;
+import org.example.enums.MOVEMENT_INSTRUCTION;
+import org.example.core.Position;
+import org.example.enums.ROTATE_INSTRUCTION;
+import org.example.core.Movable;
+import org.example.core.Positionable;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-import static org.example.Plateau.plateauList;
-import static org.example.Settings.*;
+import static org.example.config.MessageProvider.*;
+import static org.example.entities.Plateau.plateauList;
 
-public class Rover implements Movable, Positionable{
+public class Rover implements Movable, Positionable {
 
     public static int roverCount = 1;
     public static ArrayList<Rover> roverList = new ArrayList<>();
@@ -23,7 +30,7 @@ public class Rover implements Movable, Positionable{
         this.position = position;
         this.id = roverCount;
         this.plateau = plateauList.getFirst();
-        if (this.isInBounds()) {
+        if (this.isInBounds(false)) {
             roverList.add(this);
             roverCount++;
             position.setIsAlive(true);
@@ -91,8 +98,8 @@ public class Rover implements Movable, Positionable{
     }
 
     @Override
-    public boolean isInBounds() {
-        return Movable.super.isInBounds();
+    public boolean isInBounds(boolean isMoving) {
+        return Movable.super.isInBounds(isMoving);
     }
 
     @Override

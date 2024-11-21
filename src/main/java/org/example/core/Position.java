@@ -1,8 +1,10 @@
-package org.example;
+package org.example.core;
+
+import org.example.enums.DIRECTION;
 
 import java.util.Objects;
 
-public class Position implements Positionable{
+public class Position implements Positionable {
     public static DIRECTION[] DIRECTIONS = {DIRECTION.N, DIRECTION.E, DIRECTION.S, DIRECTION.W};
     public static int lastCardinalPointIndex = DIRECTIONS.length - 1;
 

@@ -1,16 +1,17 @@
-package org.example.Input;
+package org.example.input;
 
-import org.example.INSTRUCTION;
-import org.example.MOVEMENT_INSTRUCTION;
-import org.example.ROTATE_INSTRUCTION;
+import org.example.enums.INSTRUCTION;
+import org.example.enums.MOVEMENT_INSTRUCTION;
+import org.example.enums.ROTATE_INSTRUCTION;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.example.Input.InvalidUserInputException.*;
-import static org.example.Input.SetUpInput.*;
-import static org.example.InstructionsLog.instructionsLog;
-import static org.example.Settings.*;
+import static org.example.config.ExampleConfig.*;
+import static org.example.exceptions.InvalidUserInputException.*;
+import static org.example.input.SetUpInput.*;
+import static org.example.instructions.InstructionsLog.instructionsLog;
+import static org.example.config.AppConfig.*;
 
 public class InstructionParser {
 

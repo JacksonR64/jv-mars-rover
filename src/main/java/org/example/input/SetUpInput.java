@@ -1,15 +1,19 @@
-package org.example.Input;
+package org.example.input;
 
-import org.example.Rover;
+import org.example.entities.Rover;
+import org.example.exceptions.InvalidUserInputException;
+
 import java.util.Scanner;
 
-import static org.example.Input.InstructionInput.errorCount;
-import static org.example.Input.InstructionInput.instructionInput;
-import static org.example.Input.PlateauCreationParser.plateauCreationParser;
-import static org.example.Input.RoverCreationParser.roverCreationParser;
-import static org.example.Plateau.plateauList;
-import static org.example.Rover.roverList;
-import static org.example.Settings.*;
+import static org.example.config.ExampleConfig.*;
+import static org.example.config.MessageProvider.*;
+import static org.example.input.InstructionInput.errorCount;
+import static org.example.input.InstructionInput.instructionInput;
+import static org.example.input.PlateauCreationParser.plateauCreationParser;
+import static org.example.input.RoverCreationParser.roverCreationParser;
+import static org.example.entities.Plateau.plateauList;
+import static org.example.entities.Rover.roverList;
+import static org.example.config.AppConfig.*;
 
 public class SetUpInput {
     public static int inputCounter = 0;
