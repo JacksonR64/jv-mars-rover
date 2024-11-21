@@ -6,9 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InstructionsLog {
+    // TODO: Better utilise in other methods
     public static final List<List<INSTRUCTION>> instructionsLog = new ArrayList<>();
-
-
 
     public static void addInstructions(List<INSTRUCTION> instructions) {
         instructionsLog.add(new ArrayList<>(instructions)); // Ensure a new copy is added

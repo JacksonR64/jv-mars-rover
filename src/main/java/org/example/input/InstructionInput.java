@@ -17,6 +17,7 @@ import static org.example.config.AppConfig.*;
 import static org.example.input.SetUpInput.*;
 
 public class InstructionInput {
+    // TODO: Refactor, abstract error handler
     public static int instructionCount;
     public static int errorCount;
 

@@ -1,6 +1,7 @@
-/*
+
 package org.example;
 
+/*
 import org.example.Input.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,9 +11,11 @@ import static org.example.Input.PlateauCreationParser.*;
 import static org.example.config.AppConfig.X_AXIS_MIN;
 import static org.example.config.AppConfig.Y_AXIS_MIN;
 import static org.junit.jupiter.api.Assertions.*;
+*/
 
 class PlateauCreationParserTest {
-
+    // TODO: Refactor / Fix test for improved methods
+/*
     @Test
     @DisplayName("valid expected inputs return correct PlateauSize")
     void plateauCreationParserValidInputTest() {
@@ -95,5 +98,5 @@ class PlateauCreationParserTest {
         assertEquals(generalPlateauSizeInputExceptionMessage, exception10.getMessage());
 
     }
+    */
 }
-*/

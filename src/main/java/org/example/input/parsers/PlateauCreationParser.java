@@ -7,6 +7,7 @@ import static org.example.exceptions.InvalidUserInputException.*;
 import static org.example.config.AppConfig.*;
 
 public class PlateauCreationParser {
+    // TODO: Refactor, Remove throws, Improve Error Handling
     public static boolean plateauCreationParser (String input) {
 
         if (input == null || input.isEmpty()) throw generalPlateauSizeInputException;

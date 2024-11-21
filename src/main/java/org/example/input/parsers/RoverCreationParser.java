@@ -6,6 +6,7 @@ import org.example.entities.Rover;
 import static org.example.exceptions.InvalidUserInputException.generalRoverInputException;
 
 public class RoverCreationParser {
+    // TODO: Improve Error handling
     public static boolean roverCreationParser (String input) {
         if (input == null || input.isEmpty()) throw generalRoverInputException;
         int x;

@@ -53,7 +53,6 @@ public interface Movable {
 
         if (isMoving) tick = DEFAULT_TICK;
 
-        // General bounds check if rover is not alive
         if (!position.getIsAlive()) {
             return position.getX() >= plateauSize.getxAxisStart()
                     && position.getX() <= plateauSize.getxAxisEnd()
@@ -61,7 +60,6 @@ public interface Movable {
                     && position.getY() <= plateauSize.getyAxisEnd();
         }
 
-        // Determine axis position and boundary based on direction
         int axisPosition = switch (facing) {
             case DIRECTION.N, DIRECTION.S -> position.getY(); // Y-axis for N/S
             case DIRECTION.E, DIRECTION.W -> position.getX(); // X-axis for E/W
@@ -74,7 +72,6 @@ public interface Movable {
             case DIRECTION.W -> plateauSize.getxAxisStart();
         };
 
-        // Check out-of-bounds conditions
         if ((facing == DIRECTION.N || facing == DIRECTION.E) && axisPosition + tick > boundaryLimit) {
             return false;
         } else return (facing != DIRECTION.S && facing != DIRECTION.W) || axisPosition - tick >= boundaryLimit;

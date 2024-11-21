@@ -14,6 +14,7 @@ import static org.example.entities.Rover.roverList;
 import static org.example.config.AppConfig.*;
 
 public class SetUpInput {
+    // TODO: Refactor, rename, abstract
     public static int inputCounter = 0;
     public static int totalInitialInputs = 0;
 

@@ -3,7 +3,7 @@ package org.example.enums;
 public enum ROTATE_INSTRUCTION implements INSTRUCTION {
     L,
     R;
-/*    ROTATE_LEFT("L"),
+    /*    ROTATE_LEFT("L"),
     ROTATE_RIGHT("R");*/
 
     public static boolean isValid(String input) {
