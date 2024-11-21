@@ -1,6 +1,7 @@
-package org.example.input;
+package org.example.input.setup;
 
 import org.example.exceptions.InvalidUserInputException;
+import org.example.input.SetUpInput;
 
 import java.util.Scanner;
 
@@ -8,10 +9,10 @@ import static org.example.config.AppConfig.EXAMPLE_MODE_ON;
 import static org.example.config.ExampleConfig.EXAMPLE_INPUT;
 import static org.example.config.MessageProvider.*;
 import static org.example.entities.Rover.roverList;
-import static org.example.input.RoverCreationParser.roverCreationParser;
+import static org.example.input.parsers.RoverCreationParser.roverCreationParser;
 
 public class RoverSetUp {
-    static void setUpRover(Scanner scanner) {
+    public static void setUpRover(Scanner scanner) {
         String input;
         while (SetUpInput.inputCounter < SetUpInput.totalInitialInputs) {
             System.out.print(ROVER_SET_UP_MESSAGE);

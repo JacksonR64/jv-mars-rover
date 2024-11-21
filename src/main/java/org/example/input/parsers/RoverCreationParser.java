@@ -1,4 +1,4 @@
-package org.example.input;
+package org.example.input.parsers;
 import org.example.enums.DIRECTION;
 import org.example.core.Position;
 import org.example.entities.Rover;

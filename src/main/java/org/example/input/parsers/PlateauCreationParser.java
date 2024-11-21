@@ -1,4 +1,4 @@
-package org.example.input;
+package org.example.input.parsers;
 
 import org.example.entities.Plateau;
 import org.example.entities.PlateauSize;

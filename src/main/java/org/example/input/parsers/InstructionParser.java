@@ -1,4 +1,4 @@
-package org.example.input;
+package org.example.input.parsers;
 
 import org.example.enums.INSTRUCTION;
 import org.example.enums.MOVEMENT_INSTRUCTION;

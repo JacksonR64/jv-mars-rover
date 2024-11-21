@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import static org.example.config.ExampleConfig.*;
 import static org.example.config.MessageProvider.*;
-import static org.example.input.InstructionParser.instructionParser;
+import static org.example.input.parsers.InstructionParser.instructionParser;
 import static org.example.exceptions.InvalidUserInputException.generalInstructionInputException;
 import static org.example.instructions.InstructionsLog.*;
 import static org.example.entities.Rover.roverList;

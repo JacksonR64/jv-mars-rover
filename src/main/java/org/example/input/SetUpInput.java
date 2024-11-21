@@ -1,15 +1,14 @@
 package org.example.input;
 
 import org.example.entities.Rover;
-import org.example.exceptions.InvalidUserInputException;
+import org.example.input.setup.PlateauSetUp;
+import org.example.input.setup.RoverSetUp;
 
 import java.util.Scanner;
 
 import static org.example.config.ExampleConfig.*;
-import static org.example.config.MessageProvider.*;
 import static org.example.input.InstructionInput.errorCount;
 import static org.example.input.InstructionInput.instructionInput;
-import static org.example.input.PlateauCreationParser.plateauCreationParser;
 import static org.example.entities.Plateau.plateauList;
 import static org.example.entities.Rover.roverList;
 import static org.example.config.AppConfig.*;
@@ -31,7 +30,7 @@ public class SetUpInput {
 
         while (inputCounter < totalInitialInputs) {
             if (inputCounter == 0) {
-                setUpPlateau(scanner);
+                PlateauSetUp.setUpPlateau(scanner);
                 System.out.println(GREEN + "\n              NEW: " + plateauList.getLast() + RESET);
             }
             else if ((inputCounter - errorCount)% 2 != 0) {
@@ -49,31 +48,6 @@ public class SetUpInput {
         System.out.println(GREEN + "\n             END: " + plateauList.getLast() + RESET);
 
         if (EXAMPLE_MODE_ON) roverList.forEach(r -> System.out.println(r.getPosition().toSimpleString()));
-    }
-
-    private static void setUpPlateau(Scanner scanner) {
-        String input;
-        System.out.println(PLATEAU_SET_UP_MESSAGE);
-        while (inputCounter < totalInitialInputs) {
-            try {
-                if (EXAMPLE_MODE_ON) {
-                    System.out.println(EXAMPLE_INPUT[inputCounter]);
-                    plateauCreationParser(EXAMPLE_INPUT[inputCounter]);
-                    System.out.print(PLATEAU_CREATED_MESSAGE);
-                    return;}
-                else input = scanner.nextLine();
-
-                if (plateauCreationParser(input)) {
-                    System.out.print(PLATEAU_CREATED_MESSAGE);
-                    break;
-                } else {
-                    System.out.print(INVALID_INPUT_MESSAGE);
-                }
-            } catch (InvalidUserInputException e) {
-                System.out.println(e.getMessage());
-                System.out.println(TRY_AGAIN_MESSAGE);
-            }
-        }
     }
 
 }
