@@ -101,6 +101,7 @@ MMRMMRMRRM
 ---
 
 ## Future Enhancements
+- Run program in different modes from CLI.
 - Extendable to drones or other movable objects.
 - Additional input sources (e.g., file-based input).
 - Advanced instruction types (e.g., diagonals, 3D movement).
