@@ -1,29 +1,31 @@
-package org.example.input;
+package org.example.input.setup;
 
 import org.example.enums.INSTRUCTION;
 import org.example.enums.MOVEMENT_INSTRUCTION;
 import org.example.enums.ROTATE_INSTRUCTION;
 import org.example.entities.Rover;
+import org.example.exceptions.InvalidUserInputException;
 
 import java.util.Scanner;
 
 import static org.example.config.ExampleConfig.*;
 import static org.example.config.MessageProvider.*;
+import static org.example.input.ErrorHandler.handleError;
 import static org.example.input.parsers.InstructionParser.instructionParser;
-import static org.example.exceptions.InvalidUserInputException.generalInstructionInputException;
 import static org.example.instructions.InstructionsLog.*;
 import static org.example.entities.Rover.roverList;
 import static org.example.config.AppConfig.*;
 import static org.example.input.SetUpInput.*;
+import static org.example.input.ErrorHandler.errorCounter;
 
-public class InstructionInput {
+public class InstructionSetUp {
     // TODO: Refactor, abstract error handler
-    public static int instructionCount;
-    public static int errorCount;
+    public static int instructionCounter;
+
 
     public static void instructionInput() {
-        instructionCount = 1;
-        errorCount = 0;
+        instructionCounter = 1;
+        errorCounter = 0;
         String input;
 
         Scanner scanner = new Scanner(System.in);
@@ -50,29 +52,22 @@ public class InstructionInput {
                     for (INSTRUCTION instruction : instructionsLog.getLast()) {
                         executeInstruction(instruction);
                     }
-                    errorCount = 0;
+                    errorCounter = 0;
                     System.out.print(VALID_INPUT_MESSAGE);
                 }
-            } catch (Exception e) {
-                errorCount++;
-                inputCounter++;
-                if (errorCount < INSTRUCTION_ATTEMPT_WARMING_LIMIT) {
-                    System.out.print(INVALID_INPUT_MESSAGE);
-                } else if (errorCount < INSTRUCTION_ATTEMPT_END_LIMIT) {
-                    System.out.print(INVALID_INPUT_MESSAGE + DETAILED_INSTRUCTION_MESSAGE);
-                } else if (errorCount == INSTRUCTION_ATTEMPT_END_LIMIT) {
-                    System.out.print(INVALID_INPUT_MESSAGE + FINAL_WARNING + DETAILED_INSTRUCTION_MESSAGE);
-                } else {
-                    throw generalInstructionInputException;
-                }
+            } catch (InvalidUserInputException e) {
+                handleError("Instruction");
+            } catch (Exception e){
+                throw new InvalidUserInputException(e);
             }
+
             System.out.print(roverList.getLast());
         }
     }
 
     private static void executeInstruction(INSTRUCTION instruction) {
         Rover currentRover = roverList.getLast();
-        String instructionCountFormatted = String.format("%02d", instructionCount++);
+        String instructionCountFormatted = String.format("%02d", instructionCounter++);
 
         if (instruction instanceof MOVEMENT_INSTRUCTION) {
             if (currentRover.isInBounds(true)) {

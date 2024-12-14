@@ -8,6 +8,7 @@ import java.util.Scanner;
 import static org.example.config.AppConfig.EXAMPLE_MODE_ON;
 import static org.example.config.ExampleConfig.EXAMPLE_INPUT;
 import static org.example.config.MessageProvider.*;
+import static org.example.input.ErrorHandler.handleError;
 import static org.example.input.parsers.PlateauCreationParser.plateauCreationParser;
 
 public class PlateauSetUp {
@@ -29,9 +30,10 @@ public class PlateauSetUp {
                 } else {
                     System.out.print(INVALID_INPUT_MESSAGE);
                 }
-            } catch (InvalidUserInputException e) {
-                System.out.println(e.getMessage());
-                System.out.println(TRY_AGAIN_MESSAGE);
+            }  catch (InvalidUserInputException e) {
+                handleError("Plateau");
+            } catch (Exception e) {
+                throw new InvalidUserInputException(e);
             }
         }
     }
