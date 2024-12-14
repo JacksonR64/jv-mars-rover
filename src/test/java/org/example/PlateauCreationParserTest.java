@@ -1,15 +1,11 @@
 
 package org.example;
 
-
-import org.example.entities.Plateau;
-import org.example.entities.PlateauSize;
 import org.example.exceptions.InvalidUserInputException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-import static org.example.exceptions.InvalidUserInputException.generalPlateauSizeInputException;
 import static org.example.input.parsers.PlateauCreationParser.plateauCreationParser;
 import static org.junit.jupiter.api.Assertions.*;
 
