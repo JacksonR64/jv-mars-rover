@@ -1,21 +1,20 @@
 
 package org.example;
 
-/*
-import org.example.Input.*;
+
+import org.example.entities.Plateau;
+import org.example.entities.PlateauSize;
+import org.example.exceptions.InvalidUserInputException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-import static org.example.Input.PlateauCreationParser.*;
-import static org.example.config.AppConfig.X_AXIS_MIN;
-import static org.example.config.AppConfig.Y_AXIS_MIN;
+import static org.example.exceptions.InvalidUserInputException.generalPlateauSizeInputException;
+import static org.example.input.parsers.PlateauCreationParser.plateauCreationParser;
 import static org.junit.jupiter.api.Assertions.*;
-*/
+
 
 class PlateauCreationParserTest {
-    // TODO: Refactor / Fix test for improved methods
-/*
     @Test
     @DisplayName("valid expected inputs return correct PlateauSize")
     void plateauCreationParserValidInputTest() {
@@ -26,18 +25,18 @@ class PlateauCreationParserTest {
         String input4 = "1234 9876";
 
         // Act
-        PlateauSize expected1 = plateauCreationParser(input1);
-        PlateauSize expected2 = plateauCreationParser(input2);
-        PlateauSize expected3 = plateauCreationParser(input3);
-        PlateauSize expected4 = plateauCreationParser(input4);
+        boolean result1 = plateauCreationParser(input1);
+        boolean result2 = plateauCreationParser(input2);
+        boolean result3 = plateauCreationParser(input3);
+        boolean result4 = plateauCreationParser(input4);
 
         // Assert
-        assertArrayEquals(new int[]{1, 1}, new int[]{expected1.getxAxis(), expected1.getyAxis()});
-        assertArrayEquals(new int[]{5, 5}, new int[]{expected2.getxAxis(), expected2.getyAxis()});
-        assertArrayEquals(new int[]{99, 99}, new int[]{expected3.getxAxis(), expected3.getyAxis()});
-        assertArrayEquals(new int[]{1234, 9876}, new int[]{expected4.getxAxis(), expected4.getyAxis()});
-    }
+        assertTrue(result1);
+        assertTrue(result2);
+        assertTrue(result3);
+        assertTrue(result4);
 
+    }
     @Test
     @DisplayName("invalid inputs throw correct exception")
     void plateauCreationParserInvalidInputTest() {
@@ -53,50 +52,17 @@ class PlateauCreationParserTest {
         String input9 = "-5 -5";
         String input10 = "5,5";
 
-        String generalPlateauSizeInputExceptionMessage =
-                "Error: Please enter exactly 2 values to create plateau." +
-                "\nX axis min: " + X_AXIS_MIN +
-                "\nY axis min: " + Y_AXIS_MIN;
-        String InvalidXAxisSizeInputException =
-        ("Error: Please enter Valid Size for X axis." +
-                "\nX axis min: " + X_AXIS_MIN);
-        String InvalidYAxisSizeInputException ="Error: Please enter Valid Size for Y axis." +
-                                "\nX axis min: " + Y_AXIS_MIN;
-
-        // Act
-        InvalidUserInputException exception1 = assertThrows(
-                InvalidUserInputException.class, () -> plateauCreationParser(input1));
-        InvalidUserInputException exception2 = assertThrows(
-                InvalidUserInputException.class, () -> plateauCreationParser(input2));
-        InvalidUserInputException exception3 = assertThrows(
-                InvalidUserInputException.class, () -> plateauCreationParser(input3));
-        InvalidUserInputException exception4 = assertThrows(
-                InvalidUserInputException.class, () -> plateauCreationParser(input4));
-        InvalidUserInputException exception5 = assertThrows(
-                InvalidUserInputException.class, () -> plateauCreationParser(input5));
-        InvalidUserInputException exception6 = assertThrows(
-                InvalidUserInputException.class, () -> plateauCreationParser(input6));
-        InvalidUserInputException exception7 = assertThrows(
-                InvalidUserInputException.class, () -> plateauCreationParser(input7));
-        InvalidUserInputException exception8 = assertThrows(
-                InvalidUserInputException.class, () -> plateauCreationParser(input8));
-        InvalidUserInputException exception9 = assertThrows(
-                InvalidUserInputException.class, () -> plateauCreationParser(input9));
-        InvalidUserInputException exception10 = assertThrows(
-                InvalidUserInputException.class, () -> plateauCreationParser(input10));
-
-        // Assert
-        assertEquals(generalPlateauSizeInputExceptionMessage, exception1.getMessage());
-        assertEquals(generalPlateauSizeInputExceptionMessage, exception2.getMessage());
-        assertEquals(generalPlateauSizeInputExceptionMessage, exception3.getMessage());
-        assertEquals(generalPlateauSizeInputExceptionMessage, exception4.getMessage());
-        assertEquals(generalPlateauSizeInputExceptionMessage, exception5.getMessage());
-        assertEquals(InvalidXAxisSizeInputException, exception6.getMessage());
-        assertEquals(InvalidYAxisSizeInputException, exception7.getMessage());
-        assertEquals(generalPlateauSizeInputExceptionMessage, exception8.getMessage());
-        assertEquals(generalPlateauSizeInputExceptionMessage, exception9.getMessage());
-        assertEquals(generalPlateauSizeInputExceptionMessage, exception10.getMessage());
+        // Act & Assert
+        assertThrows(InvalidUserInputException.class, () -> plateauCreationParser(input1));
+        assertThrows(InvalidUserInputException.class, () -> plateauCreationParser(input2));
+        assertThrows(InvalidUserInputException.class, () -> plateauCreationParser(input3));
+        assertThrows(InvalidUserInputException.class, () -> plateauCreationParser(input4));
+        assertThrows(InvalidUserInputException.class, () -> plateauCreationParser(input5));
+        assertThrows(InvalidUserInputException.class, () -> plateauCreationParser(input6));
+        assertThrows(InvalidUserInputException.class, () -> plateauCreationParser(input7));
+        assertThrows(InvalidUserInputException.class, () -> plateauCreationParser(input8));
+        assertThrows(InvalidUserInputException.class, () -> plateauCreationParser(input9));
+        assertThrows(InvalidUserInputException.class, () -> plateauCreationParser(input10));
 
     }
-    */
 }
