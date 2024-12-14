@@ -48,6 +48,24 @@ public class MessageProvider {
     public static final String ROVER_HEADING_OOB_MESSAGE = YELLOW +
             "(Rover hit a boundary wall and bounced back)" + RESET;
 
+    public static final String DETAILED_PLATEAU_MESSAGE = "\n" + YELLOW + BOLD + UNDERLINE
+            + "Please enter valid PLATEAU. \n" + "and/or any rotation instructions: "
+            + Arrays.toString(ROTATE_INSTRUCTION.values()) + "\n" +
+            "Enter String of movement instructions: "
+            + Arrays.toString(MOVEMENT_INSTRUCTION.values()) + "\n" +
+            "No spaces or other characters\n" +
+            "E.G; \"M\", \"MMM\" or \"MMLLMRM\"\n"
+            + RESET + "\n";
+
+    public static final String DETAILED_ROVER_MESSAGE = "\n" + YELLOW + BOLD + UNDERLINE
+            + "Please enter valid ROVER. \n" + "and/or any rotation instructions: "
+            + Arrays.toString(ROTATE_INSTRUCTION.values()) + "\n" +
+            "Enter String of movement instructions: "
+            + Arrays.toString(MOVEMENT_INSTRUCTION.values()) + "\n" +
+            "No spaces or other characters\n" +
+            "E.G; \"M\", \"MMM\" or \"MMLLMRM\"\n"
+            + RESET + "\n";
+
     public static final String DETAILED_INSTRUCTION_MESSAGE = "\n" + YELLOW + BOLD + UNDERLINE
             + "Please enter valid Instructions. \n" + "and/or any rotation instructions: "
             + Arrays.toString(ROTATE_INSTRUCTION.values()) + "\n" +
@@ -62,5 +80,7 @@ public class MessageProvider {
                     "FINAL WARNING: " +
                     "PLEASE ENTER VALID INSTRUCTIONS ELSE THIS PROGRAM WILL TERMINATE"
                     + RESET;
+
+
 
 }
