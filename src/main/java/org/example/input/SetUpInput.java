@@ -6,15 +6,16 @@ import org.example.input.setup.RoverSetUp;
 
 import java.util.Scanner;
 
-import static org.example.config.ExampleConfig.*;
-import static org.example.input.InstructionInput.errorCount;
-import static org.example.input.InstructionInput.instructionInput;
+import static org.example.config.AppConfig.*;
+import static org.example.config.ExampleConfig.CUSTOM_EXAMPLE_INPUT;
+import static org.example.config.ExampleConfig.EXAMPLE_INPUT;
 import static org.example.entities.Plateau.plateauList;
 import static org.example.entities.Rover.roverList;
-import static org.example.config.AppConfig.*;
+import static org.example.input.ErrorHandler.errorCounter;
+import static org.example.input.setup.InstructionSetUp.instructionInput;
 
 public class SetUpInput {
-    // TODO: Refactor, rename, abstract
+    // TODO: Refactor, rename
     public static int inputCounter = 0;
     public static int totalInitialInputs = 0;
 
@@ -26,20 +27,17 @@ public class SetUpInput {
         if (CUSTOM_EXAMPLE_ON) EXAMPLE_INPUT = CUSTOM_EXAMPLE_INPUT;
         if (EXAMPLE_MODE_ON) {
             totalInitialInputs = EXAMPLE_INPUT.length;
-        }
-        else totalInitialInputs = 3;
+        } else totalInitialInputs = 3;
 
         while (inputCounter < totalInitialInputs) {
             if (inputCounter == 0) {
                 PlateauSetUp.setUpPlateau(scanner);
                 System.out.println(GREEN + "\n              NEW: " + plateauList.getLast() + RESET);
-            }
-            else if ((inputCounter - errorCount)% 2 != 0) {
+            } else if ((inputCounter - errorCounter) % 2 != 0) {
                 RoverSetUp.setUpRover(scanner);
                 rover1 = roverList.getLast();
                 System.out.print(GREEN + "             START: " + rover1 + RESET);
-            }
-            else if ((inputCounter - errorCount )% 2 == 0) {
+            } else if ((inputCounter - errorCounter) % 2 == 0) {
                 instructionInput();
                 System.out.print(GREEN + "               END: " + rover1 + RESET);
             }
