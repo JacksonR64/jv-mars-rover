@@ -1,5 +1,7 @@
 package org.example.entities;
 
+import java.util.Objects;
+
 public class PlateauSize {
 
     private int xAxisStart;
@@ -40,5 +42,18 @@ public class PlateauSize {
                 ", Y = " + yAxisStart +
                 ":" + yAxisEnd +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PlateauSize that = (PlateauSize) o;
+        return xAxisStart == that.xAxisStart && yAxisStart == that.yAxisStart && xAxisEnd == that.xAxisEnd && yAxisEnd == that.yAxisEnd;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(xAxisStart, yAxisStart, xAxisEnd, yAxisEnd);
     }
 }
